@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var list: MutableList<String> = mutableListOf()
+    private var finishType: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,14 +40,19 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             clearButton.setOnClickListener { clearTextView()}
             clearEntryButton.setOnClickListener { clearTextAndList()}
-            backButton.setOnClickListener { }
+            backButton.setOnClickListener { backTextView()}
         }
 
-        binding.equalButton.setOnClickListener { output(list) }
+        binding.equalButton.setOnClickListener { output() }
 
     }
 
     private fun setAndOutput(numText: String) {
+        if (finishType == true) {
+            binding.numTextView.text = ""
+            finishType = false
+        }
+
         var beforetext = binding.numTextView.text.toString()
         if (beforetext == "0") beforetext = ""
         binding.numTextView.text = beforetext + numText
@@ -70,7 +76,11 @@ class MainActivity : AppCompatActivity() {
         Log.d("value", "${list}")
     }
 
-    private fun output(list: MutableList<String>) {
+    private fun backTextView() {
+        binding.numTextView.text = binding.numTextView.text.toString().dropLast(1)
+    }
+
+    private fun output() {
         var num = 2
         var markType = 1
         var sumNum = list[0].toInt()
@@ -78,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         var lastNumText = binding.numTextView.text.toString()
         list.add(lastNumText)
 
-        while (ListSizeCheck(list, num)) {
+        while (ListSizeCheck(num)) {
             when(list[markType]) {
                 "+" ->  sumNum += list[num].toInt()
                 "-" ->  sumNum -= list[num].toInt()
@@ -91,10 +101,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.numTextView.text = sumNum.toString()
+        list = mutableListOf()
+        finishType = true
         Log.d("value", "${list}")
     }
 
-    private fun ListSizeCheck(list: MutableList<String>, num: Int): Boolean {
+    private fun ListSizeCheck(num: Int): Boolean {
         try {
             list[num]
         } catch (e: ArrayIndexOutOfBoundsException) {
