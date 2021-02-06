@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             plusButton.setOnClickListener { setAndClear("+")}
             minusButton.setOnClickListener { setAndClear("-")}
-            divisionButton.setOnClickListener { setAndClear("*")}
-            multiplicationButton.setOnClickListener { setAndClear("/")}
+            divisionButton.setOnClickListener { setAndClear("/")}
+            multiplicationButton.setOnClickListener { setAndClear("*")}
         }
 
         binding.apply {
@@ -53,8 +53,12 @@ class MainActivity : AppCompatActivity() {
             finishType = false
         }
 
+        var changeInt: Int? = binding.numTextView.text.toString().toIntOrNull()
+        if (changeInt == null) binding.numTextView.text = ""
+
         var beforetext = binding.numTextView.text.toString()
         if (beforetext == "0") beforetext = ""
+
         binding.numTextView.text = beforetext + numText
     }
 
@@ -62,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         var inputNumText = binding.numTextView.text.toString()
         list.add(inputNumText)
         list.add(mark)
-        binding.numTextView.text = ""
+        binding.numTextView.text = mark
     }
 
     private fun clearTextView() {
