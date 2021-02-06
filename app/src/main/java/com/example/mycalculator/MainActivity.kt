@@ -93,8 +93,8 @@ class MainActivity : AppCompatActivity() {
 
         var num = 2
         var markType = 1
-        var sumNum = list[0].toFloat()
-
+        var sumNum = 0f
+        if(ListContentCheck(0, true)) sumNum = list[0].toFloat()
 
         Log.d("value", "$list")
         Log.d("value", "${ListContentCheck(num, true)}")
