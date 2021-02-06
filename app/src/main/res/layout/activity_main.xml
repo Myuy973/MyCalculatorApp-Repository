@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/numTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout3" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/clearEntryButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CE" />
+
+                <Button
+                    android:id="@+id/clearButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="C" />
+
+                <Button
+                    android:id="@+id/backButton"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_baseline_arrow_back_24" />
+
+            </LinearLayout>
+
+            <TableLayout
+                android:id="@+id/numbersTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/oneButton"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/twoButton"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="2" />
+
+                    <Button
+                        android:id="@+id/threeButton"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="3" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/fourButton"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="4" />
+
+                    <Button
+                        android:id="@+id/fiveButton"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="5" />
+
+                    <Button
+                        android:id="@+id/sixButton"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="6" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/sevenButton"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="7" />
+
+                    <Button
+                        android:id="@+id/eightButton"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="8" />
+
+                    <Button
+                        android:id="@+id/nineButton"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="9" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/zeroButton"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+
+                    <Button
+                        android:id="@+id/dotButton"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="." />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/operators"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/divisionButton"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="/" />
+
+            <Button
+                android:id="@+id/multiplicationButton"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="*" />
+
+            <Button
+                android:id="@+id/minusButton"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="-" />
+
+            <Button
+                android:id="@+id/plusButton"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="+" />
+
+            <Button
+                android:id="@+id/equalButton"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="=" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
