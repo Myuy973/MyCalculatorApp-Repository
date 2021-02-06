@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
             sevenButton.setOnClickListener { setAndOutput("7")}
             eightButton.setOnClickListener { setAndOutput("8")}
             nineButton.setOnClickListener { setAndOutput("9")}
+            dotButton.setOnClickListener { setAndOutput(".")}
         }
 
         binding.apply {
@@ -53,8 +54,10 @@ class MainActivity : AppCompatActivity() {
             finishType = false
         }
 
-        var changeInt: Int? = binding.numTextView.text.toString().toIntOrNull()
-        if (changeInt == null) binding.numTextView.text = ""
+        when (binding.numTextView.text.toString()) {
+            "+", "-", "*", "/" ->
+                binding.numTextView.text = ""
+        }
 
         var beforetext = binding.numTextView.text.toString()
         if (beforetext == "0") beforetext = ""
@@ -85,19 +88,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun output() {
-        var num = 2
-        var markType = 1
-        var sumNum = list[0].toInt()
-
         var lastNumText = binding.numTextView.text.toString()
         list.add(lastNumText)
 
-        while (ListSizeCheck(num)) {
+        var num = 2
+        var markType = 1
+        var sumNum = list[0].toFloat()
+
+
+        Log.d("value", "$list")
+        Log.d("value", "${ListContentCheck(num, true)}")
+        Log.d("value", "${ListContentCheck(markType)}")
+        while (ListContentCheck(num, true) && ListContentCheck(markType)) {
             when(list[markType]) {
-                "+" ->  sumNum += list[num].toInt()
-                "-" ->  sumNum -= list[num].toInt()
-                "*" ->  sumNum *= list[num].toInt()
-                "/" ->  sumNum /= list[num].toInt()
+                "+" ->  sumNum += list[num].toFloat()
+                "-" ->  sumNum -= list[num].toFloat()
+                "*" ->  sumNum *= list[num].toFloat()
+                "/" ->  sumNum /= list[num].toFloat()
             }
 
             markType += 2
@@ -105,20 +112,39 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.numTextView.text = sumNum.toString()
+
         list = mutableListOf()
         finishType = true
         Log.d("value", "${list}")
     }
 
-    private fun ListSizeCheck(num: Int): Boolean {
-        try {
-            list[num]
-        } catch (e: ArrayIndexOutOfBoundsException) {
-            return false
-        } catch (e: IndexOutOfBoundsException) {
-            return false
+    private fun ListContentCheck(num: Int, needNum: Boolean = false): Boolean {
+        when(needNum) {
+            true -> {
+                try {
+                    list[num].toFloat()
+                } catch (e: NumberFormatException) {
+                    return false
+                } catch (e: ArrayIndexOutOfBoundsException) {
+                    return false
+                } catch (e: IndexOutOfBoundsException) {
+                    return false
+                }
+                return true
+            }
+            false -> {
+                try {
+                    list[num]
+                } catch (e: ArrayIndexOutOfBoundsException) {
+                    return false
+                } catch (e: IndexOutOfBoundsException) {
+                    return false
+                } catch (e: NumberFormatException) {
+                    return false
+                }
+                return true
+            }
         }
-        return true
     }
 
 

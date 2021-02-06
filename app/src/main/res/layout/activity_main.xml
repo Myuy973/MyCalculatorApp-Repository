@@ -10,6 +10,7 @@
         android:id="@+id/numTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:maxLength="7"
         android:text="0"
         android:textAlignment="textEnd"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"

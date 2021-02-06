@@ -3,6 +3,7 @@
     package="com.example.mycalculator">
 
     <application
+        android:name=".MyCalculatorApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
