@@ -7,6 +7,17 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/formulaOutputText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/numTextView"
+        app:layout_constraintEnd_toEndOf="@+id/numTextView"
+        app:layout_constraintStart_toStartOf="@+id/numTextView"
+        tools:text="0+" />
+
+    <TextView
         android:id="@+id/numTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
